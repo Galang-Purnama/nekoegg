@@ -1,171 +1,100 @@
-<div align="center">
+# 🐾 NekoEgg Commercial Edition (IP-Based Rental Runtime)
 
-# 🐾 NEKOEGG
-### The Ultimate All-in-One Multi-Runtime Environment for Pterodactyl & Pelican
+[![Pterodactyl Egg](https://img.shields.io/badge/Pterodactyl-PTDL__v2-blue?style=for-the-badge&logo=pterodactyl)](https://pterodactyl.io/)
+[![Docker Image](https://img.shields.io/badge/Docker-ghcr.io%2Fgalang--purnama%2Fnekoegg%3Alatest-2496ED?style=for-the-badge&logo=docker)](https://github.com/Galang-Purnama/NekoHost-EGG)
+[![Licensing](https://img.shields.io/badge/Licensing-Pure%20IP--Whitelisting-brightgreen?style=for-the-badge&logo=shield)](https://nekohost.id)
+[![Edition](https://img.shields.io/badge/Edition-Commercial%20%2F%20Rental-gold?style=for-the-badge&logo=probot)](https://nekohost.id)
+[![Multi Runtime](https://img.shields.io/badge/Runtimes-Node%20%7C%20Bun%20%7C%20Deno%20%7C%20Python%20%7C%20Go%20%7C%20PHP%20%7C%20Redis-blueviolet?style=for-the-badge)](https://nekohost.id)
 
-[![Pterodactyl](https://img.shields.io/badge/Pterodactyl-v1.x%20%2F%20v2.x-007ACC?style=for-the-badge&logo=pterodactyl&logoColor=white)](https://pterodactyl.io/)
-[![Docker Image](https://img.shields.io/badge/Docker%20Hub-ghcr.io%2Fnekoegg%3Alatest-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/Galang-Purnama/nekoegg)
-[![DRM Security](https://img.shields.io/badge/DRM-NextGen%20Node%20Auth-00C853?style=for-the-badge&logo=shield&logoColor=white)](https://nekohost.id)
-[![Multi Runtime](https://img.shields.io/badge/Runtime-Node%20%7C%20Bun%20%7C%20Deno%20%7C%20Py%20%7C%20Go%20%7C%20PHP%20%7C%20Redis-7C4DFF?style=for-the-badge)](https://nekohost.id)
-[![Architecture](https://img.shields.io/badge/Arch-AMD64%20%7C%20ARM64-FF6D00?style=for-the-badge)](https://nekohost.id)
-
-<p align="center">
-  <b>Satu Egg untuk Segala Kebutuhan: WhatsApp Bot, Discord Bot, Web Scraper, AI Automation, REST API, hingga Caching Database.</b><br>
-  <i>Dilengkapi sistem keamanan Host Anti-Abuse dan verifikasi lisensi node otomatis tanpa ribet.</i>
-</p>
-
-[🌐 Website Resmi](https://nekohost.id) • [💬 Order via WhatsApp](https://wa.me/6281319859673) • [✈️ Komunitas Telegram](https://t.me/GalangP_Dev)
+**NekoEgg Commercial Edition** adalah Egg Pterodactyl & Pelican all-in-one multi-runtime edisi sewa komersial. Menggabungkan ekosistem bahasa pemrograman terlengkap (Node.js, Bun, Deno, Python, Golang, PHP, Redis) dengan sistem proteksi lisensi **Pure IP-Based Whitelisting (Zero-Config untuk Penyewa)**.
 
 ---
 
-</div>
+## ⚡ Highlights
 
-## 📑 Daftar Navigasi
-
-- [✨ Mengapa Memilih NekoEgg?](#-mengapa-memilih-nekoegg)
-- [⚔️ Perbandingan: NekoEgg vs Egg Biasa](#️-perbandingan-nekoegg-vs-egg-biasa)
-- [📦 Ekosistem Runtime & Toolchain Lengkap](#-ekosistem-runtime--toolchain-lengkap)
-- [🔄 Cara Kerja Otorisasi IP (Zero-Config)](#-cara-kerja-otorisasi-ip-zero-config)
-- [🚀 Panduan Instalasi (Import Egg)](#-panduan-instalasi-import-egg)
-- [🛡️ Proteksi Keamanan Server Host (Anti-Abuse)](#️-proteksi-keamanan-server-host-anti-abuse)
-- [⌨️ Pintasan CLI & Utility Bawaan](#️-pintasan-cli--utility-bawaan)
-- [📞 Pemesanan & Aktivasi Lisensi Node](#-pemesanan--aktivasi-lisensi-node)
+* **Zero-Config Licensing**: Otorisasi lisensi otomatis berbasis IP VPS node host saat startup. Penyewa tidak perlu memasukkan token lisensi secara manual.
+* **Unified Multi-Runtime**: Ekosistem Node.js, Bun, Deno, Python (dengan Astral UV), Golang, PHP (Composer), dan embedded Redis server internal.
+* **Media, OCR & Scraping Suite**: Dilengkapi Tesseract OCR (Bahasa Indo & Eng), libvips (`vips`), WebP tools lengkap, FFmpeg, ImageMagick, serta headless Chromium.
+* **Host Anti-Abuse Hardening**: Proteksi aktif anti-miner, anti-torrent (DMCA), anti-DDoS / UDP storm limiter, file sandbox (CD-Jail), dan sensitive credentials protector (`chmod 600`).
 
 ---
 
-## ✨ Mengapa Memilih NekoEgg?
+## 📦 Runtime & Ekosistem Lengkap
 
-- **⚡ Multi-Runtime All-in-One**  
-  Bebas jalankan Node.js (20–26), Bun, Deno, Python (3.10–3.14), Golang, PHP (8.1–8.4), dan Redis dalam satu server tanpa perlu gonta-ganti Docker image.
-
-- **🌐 Zero-Config Node Authorization**  
-  Otorisasi lisensi otomatis berbasis IP VPS secara instan (< 15ms). Penyewa tidak perlu repot memasukkan kode lisensi manual di panel.
-
-- **🎬 Multimedia & Web Scraping Ready**  
-  Google Chromium Headless (Puppeteer/Playwright), FFmpeg, ImageMagick, libvips, dan yt-dlp sudah siap pakai untuk pengolahan media dan scraping.
-
-- **🛡️ Enterprise Host Anti-Abuse Shield**  
-  Menjaga server host tetap aman dengan proteksi aktif anti-crypto mining, filter torrent (DMCA), anti-DDoS, dan pembatasan proses (anti-fork bomb).
-
-- **🚀 Kecepatan Instalasi Ekstrem**  
-  Dilengkapi package manager generasi terbaru seperti **Astral `uv`** (Python), **Bun**, **PNPM**, dan **Composer 2** yang 10–100x lebih cepat dari installer biasa.
-
----
-
-## ⚔️ Perbandingan: NekoEgg vs Egg Biasa
-
-| Fitur / Kemampuan | 🐾 NekoEgg Commercial | Egg Standar / Publik |
-| :--- | :---: | :---: |
-| **Dukungan Bahasa** | ✅ **Semua Bahasa (Node, Bun, Deno, Python, Go, PHP, Redis)** | ❌ Hanya 1 Bahasa (Node *atau* Python saja) |
-| **Browser Headless** | ✅ **Chromium C++ Ready + Noto Color Emoji** | ❌ Sering error library Puppeteer/Playwright |
-| **Audio/Video Rendering** | ✅ **FFmpeg + SoX + Libopus + yt-dlp Lengkap** | ❌ Terbatas / Tanpa FFmpeg |
-| **Proteksi Host Node** | ✅ **Active Anti-Mining, Anti-Torrent & Anti-DDoS** | ❌ Rentan Abuse (Mining, Torrent, Flooder) |
-| **Sistem Lisensi** | ✅ **Pure IP-Based Whitelisting Otomatis** | ❌ Manual input key yang rawan bocor |
-| **Package Manager Cepat**| ✅ **Astral `uv` + Bun + PNPM + Composer** | ❌ Standar (npm / pip biasa) |
+| Komponen | Versi yang Didukung | Keterangan & Cara Pakai |
+| :--- | :--- | :--- |
+| **Node.js** | 20, 22, 24, 25, 26 *(Default: 26)* | Variabel `NODE_VERSION` / `nvm use <ver>` |
+| **Bun** | Latest Stable | `bun run <file>`, `bun install` |
+| **Deno** | 1.x, 2.x, latest *(Default: latest)* | Variabel `DENO_VERSION` / `deno run` |
+| **Python** | 3.10, 3.11, 3.12, 3.13, 3.14 + **Astral UV** | Variabel `PYTHON_VERSION` / `uv pip install` |
+| **Golang** | 1.22, 1.23, 1.24, 1.25, 1.26 *(Default: 1.26)* | Variabel `GO_VERSION` / `go run` |
+| **PHP** | 8.1, 8.2, 8.3, 8.4 + **Composer** | Variabel `PHP_VERSION` / `composer install` |
+| **Redis** | Internal Local Server & Remote Mode | `REDIS_MODE=local` / `redis-cli` |
+| **Tesseract OCR** | Bahasa Indonesia (`ind`) & Inggris (`eng`) | `tesseract input.png output -l ind` |
+| **Media Engine** | FFmpeg, SoX, WebP, Libvips, ImageMagick | Video/audio convert, WA sticker & graphics |
+| **Scraper / Browser** | Chromium Headless + Fonts Emoji/CJK | Puppeteer & Playwright ready |
+| **Tunneling** | Cloudflare Zero Trust, Bore TCP, Localtunnel | `cloudflared`, `bore`, `lt` |
 
 ---
 
-## 📦 Ekosistem Runtime & Toolchain Lengkap
+## 🌐 Sistem Otorisasi Lisensi
 
-### 1. 🟨 JavaScript & TypeScript
-* **Node.js (NVM Managed):** Versi `20.x`, `22.x`, `24.x`, `25.x`, dan `26.x` *(Default: 26)*
-* **Package Managers:** `npm`, `yarn`, `pnpm` (lengkap alias `pn`, `pnx`, `pnpx`)
-* **Modern Runtimes:** **Bun** v1.x (Ultra Fast) & **Deno** v1.x / v2.x
-* **Process Managers:** `pm2` & `nodemon` bawaan
+Semua proses verifikasi lisensi berjalan secara instan dan otomatis di latar belakang:
 
-### 2. 🐍 Python Ecosystem
-* **Python Versions:** `3.10`, `3.11`, `3.12`, `3.13`, dan `3.14` *(Default: 3.14)*
-* **High-Speed Package Manager:** **Astral `uv` & `uvx`** (Instalasi requirements dalam hitungan detik)
-* **Standard Tooling:** `pip`, `setuptools`, `wheel`, `virtualenv`
-
-### 3. 🔷 Golang & PHP
-* **Golang Compiler:** Go `1.22`, `1.23`, `1.24`, `1.25`, dan `1.26` *(Default: 1.26)*
-* **PHP Engine:** PHP `8.1`, `8.2`, `8.3`, dan `8.4` (Lengkap ekstensi: `curl`, `mbstring`, `gd`, `zip`, `sqlite`, dll)
-* **Dependency Manager:** **Composer 2**
-
-### 4. 🗄️ Database & In-Memory Cache
-* **Redis Server:** Server Redis internal bawaan (bisa dijalankan via background service)
-* **SQLite:** SQLite3 CLI & C Header files
-* **Database Clients:** MySQL / MariaDB Client & PostgreSQL Client CLI
-
-### 5. 🎬 Multimedia, Scraping & Networking
-* **Browser Headless:** Google Chromium teroptimasi dengan seluruh dependensi C++ Puppeteer/Playwright
-* **Multimedia Suite:** `ffmpeg`, `sox`, `imagemagick` (`convert`), `webp` (`cwebp`), `libvips`, `librsvg2`
-* **Media Downloader:** `yt-dlp` terpasang
-* **Tunneling:** Cloudflare Zero Trust Tunnel (`cloudflared`), Bore TCP (`bore`), Localtunnel (`lt`)
+1. **Pendaftaran Node**: Admin mendaftarkan IP Publik VPS node server ke sistem NekoHost.
+2. **Booting Otomatis**: Saat container server Pterodactyl dinyalakan, engine memvalidasi status IP node secara instan.
+3. **Siap Pakai**: Jika terdaftar dan aktif, server langsung berjalan lancar tanpa konfigurasi tambahan dari penyewa.
 
 ---
 
-## 🔄 Cara Kerja Otorisasi IP (Zero-Config)
+## 🚀 Panduan Pemasangan
 
-Tidak ada file konfigurasi lisensi yang membingungkan bagi penyewa:
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Tenant as Penyewa Server
-    participant Node as NekoEgg Runtime Engine
-    participant Cloud as NekoHost Cloud Auth
-    
-    Tenant->>Node: Start Server di Pterodactyl
-    Node->>Cloud: Otorisasi IP Node VPS (< 15ms)
-    alt IP Terdaftar & Masa Sewa Aktif
-        Cloud-->>Node: ✔ Status Authorized
-        Node-->>Tenant: Server Langsung Berjalan Normal & Lancar!
-    else IP Belum Terdaftar / Expired
-        Cloud-->>Node: ✖ Akses Ditolak
-        Node-->>Tenant: Tampilkan Info Kontak Admin & Container Berhenti
-    end
-```
+1. Download file [`egg.json`](egg.json) dari repository ini.
+2. Buka **Admin Panel Pterodactyl** → **Nests** → Pilih Nest → Klik **Import Egg**.
+3. Pastikan konfigurasi image mengarah ke:
+   ```text
+   ghcr.io/galang-purnama/nekoegg:latest
+   ```
+4. Buat Server baru dengan Egg tersebut. Server langsung aktif seketika.
 
 ---
 
-## 🚀 Panduan Pemasangan (Import Egg)
+## 🛡️ Keamanan & Proteksi Host
 
-### Bagi Pemilik Hosting (Admin Pterodactyl / Pelican):
+NekoEgg dilengkapi proteksi sandboxing multi-lapis untuk menjaga stabilitas dan reputasi node host:
 
-```text
-Langkah 1: Masuk ke Admin Panel Pterodactyl -> Nests -> Pilih Nest Anda.
-Langkah 2: Klik tombol "Import Egg" dan pilih file "egg.json".
-Langkah 3: Pastikan kolom Docker Image mengarah ke:
-           ghcr.io/galang-purnama/nekoegg:latest
-Langkah 4: Simpan. Seluruh server baru kini siap dibuat menggunakan NekoEgg!
-```
-
----
-
-## 🛡️ Proteksi Keamanan Server Host (Anti-Abuse)
-
-NekoEgg dilengkapi sistem sandboxing multi-lapis aktif untuk menjamin server host Anda tidak disalahgunakan:
-
-* 🚫 **Anti-Crypto Mining Watchdog:** Mematikan paksa script miner (*XMRig, minerd, stratum*, dll).
-* ⚖️ **DMCA Torrent Filter:** Memblokir protokol BitTorrent (*qBittorrent, transmission, deluged*) demi keamanan hukum host.
-* 🛡️ **Anti-DDoS Flooder:** Menangkal eksekusi script penyerang jaringan (*UDP flood, slowloris, LOIC*).
-* 🔒 **CD-Jail Restriction:** Membatasi akses user agar tetap terisolasi di dalam direktori `/home/container`.
-* ⚡ **Anti-Fork Bomb:** Membatasi alokasi maksimal proses (`nproc 156`) demi stabilitas CPU host.
-* 🕵️ **Hidden Malware Detector:** Memindai eksekusi binary mencurigakan dari direktori temporary.
+* **Anti-Crypto Mining**: Auto-kill proses mining terlarang (*XMRig, cpuminer, stratum*, dll).
+* **DMCA Torrent Filter**: Memblokir client BitTorrent (*qBittorrent, transmission, deluged*).
+* **Anti-DDoS & UDP Storm Limiter**: Auto-kill script DoS/flooder dan memonitor anomali socket storm (>350 socket).
+* **Sensitive Credentials Protector**: Auto `chmod 600` pada `.env`, file credentials, dan session bot saat booting serta via CLI `protect-env`.
+* **CD-Jail Isolation**: Membatasi navigasi shell agar pengguna tidak dapat berpindah keluar dari direktori `/home/container`.
+* **Resource Limits**: Pembatasan alokasi proses (`nproc 156`, `nofile 65535`) demi mencegah *fork bomb*.
 
 ---
 
-## ⌨️ Pintasan CLI & Utility Bawaan
+## ⌨️ Pintasan CLI Bawaan
 
 | Perintah | Deskripsi Fungsi |
 | :--- | :--- |
 | `refresh` / `sysinfo` | Menampilkan dashboard info sistem, pemakaian CPU/RAM, dan status runtime |
-| `ff` | Menjalankan Fastfetch untuk ringkasan arsitektur sistem |
-| `myip` | Memeriksa IP publik VPS keluar secara instan |
-| `ports` | Memeriksa port jaringan yang sedang listening / aktif |
+| `ff` | Menjalankan Fastfetch untuk detail arsitektur container |
+| `myip` | Memeriksa IP publik keluar VPS secara instan |
+| `ports` | Memeriksa daftar port jaringan yang sedang aktif / listening |
 | `clean-cache` | Membersihkan cache npm, yarn, pnpm, pip, uv, composer & deno |
-| `pm2-save` | Menyimpan daftar proses PM2 agar otomatis auto-restart |
+| `protect-env` | Mengunci dan memproteksi file credentials & `.env` (`chmod 600`) |
+| `pm2-save` | Menyimpan status daftar proses PM2 agar restart otomatis |
+| `pm2-list` | Menampilkan tabel status semua proses PM2 yang berjalan |
 | `cls` | Membersihkan layar konsol terminal |
+| `test-notify` | Menguji webhook Discord / Telegram bot notification |
 
 ---
 
-## 📞 Pemesanan & Aktivasi Lisensi Node
+## 📞 Layanan & Dukungan
 
-Tertarik menggunakan NekoEgg untuk hosting Anda atau ingin mendaftarkan IP node baru?
+Untuk pendaftaran IP node, perpanjangan masa aktif sewa, atau konsultasi:
 
-* 🌐 **Website Resmi:** [https://nekohost.id](https://nekohost.id)
+* 🌐 **Website:** [https://nekohost.id](https://nekohost.id)
+* 📧 **Email:** `admin@nekohost.id`
 * 💬 **WhatsApp Admin:** [https://wa.me/6281319859673](https://wa.me/6281319859673)
 * ✈️ **Telegram Dukungan:** [https://t.me/GalangP_Dev](https://t.me/GalangP_Dev)
 
