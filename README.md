@@ -15,7 +15,7 @@
 * **Zero-Config Licensing**: Otorisasi lisensi otomatis berbasis IP VPS node host saat startup. Penyewa tidak perlu memasukkan token lisensi secara manual.
 * **Unified Multi-Runtime**: Ekosistem Node.js, Bun, Deno, Python (dengan Astral UV), Golang, PHP (Composer), dan embedded Redis server internal.
 * **Media, OCR & Scraping Suite**: Dilengkapi Tesseract OCR (Bahasa Indo & Eng), libvips (`vips`), WebP tools lengkap, FFmpeg, ImageMagick, serta headless Chromium.
-* **Host Anti-Abuse Hardening**: Proteksi aktif anti-miner, anti-torrent (DMCA), anti-DDoS / UDP storm limiter, file sandbox (CD-Jail), dan sensitive credentials protector (`chmod 600`).
+* **Host Anti-Abuse Hardening**: Proteksi aktif anti-miner, anti-torrent (DMCA), mitigasi DDoS flooder, isolasi workspace, dan sistem proteksi credentials.
 
 ---
 
@@ -61,14 +61,16 @@ Semua proses verifikasi lisensi berjalan secara instan dan otomatis di latar bel
 
 ## 🛡️ Keamanan & Proteksi Host
 
-NekoEgg dilengkapi proteksi sandboxing multi-lapis untuk menjaga stabilitas dan reputasi node host:
+NekoEgg dilengkapi sistem pengamanan multi-lapis aktif untuk menjamin stabilitas, kepatuhan, dan reputasi node host:
 
-* **Anti-Crypto Mining**: Auto-kill proses mining terlarang (*XMRig, cpuminer, stratum*, dll).
-* **DMCA Torrent Filter**: Memblokir client BitTorrent (*qBittorrent, transmission, deluged*).
-* **Anti-DDoS & UDP Storm Limiter**: Auto-kill script DoS/flooder dan memonitor anomali socket storm (>350 socket).
-* **Sensitive Credentials Protector**: Auto `chmod 600` pada `.env`, file credentials, dan session bot saat booting serta via CLI `protect-env`.
-* **CD-Jail Isolation**: Membatasi navigasi shell agar pengguna tidak dapat berpindah keluar dari direktori `/home/container`.
-* **Resource Limits**: Pembatasan alokasi proses (`nproc 156`, `nofile 65535`) demi mencegah *fork bomb*.
+* **Anti-Crypto Mining**: Proteksi aktif terhadap aktivitas penambangan aset kripto terlarang.
+* **DMCA & Torrent Guard**: Filter pencegahan lalu lintas client BitTorrent demi kepatuhan hukum provider host.
+* **Anti-DDoS & Traffic Flood Limiter**: Mitigasi otomatis terhadap script penyerang jaringan dan anomali traffic storm.
+* **Anti-Reverse Shell & Backdoor Protection**: Pengawasan cerdas terhadap aktivitas eksekusi remote shell yang tidak sah.
+* **Privilege Escalation Prevention**: Pembatasan akses terhadap perintah administratif sistem demi isolasi container yang ketat.
+* **Sensitive Credentials Protector**: Perlindungan hak akses file konfigurasi dan token otentikasi secara otomatis.
+* **Workspace Isolation**: Isolasi direktori kerja pengguna untuk mencegah akses ke direktori sistem.
+* **Resource Quota & Stability Guard**: Pembatasan alokasi proses maksimal demi menjamin stabilitas CPU dan memori node host.
 
 ---
 
@@ -81,7 +83,7 @@ NekoEgg dilengkapi proteksi sandboxing multi-lapis untuk menjaga stabilitas dan 
 | `myip` | Memeriksa IP publik keluar VPS secara instan |
 | `ports` | Memeriksa daftar port jaringan yang sedang aktif / listening |
 | `clean-cache` | Membersihkan cache npm, yarn, pnpm, pip, uv, composer & deno |
-| `protect-env` | Mengunci dan memproteksi file credentials & `.env` (`chmod 600`) |
+| `protect-env` | Mengunci dan mengamankan file konfigurasi & credentials |
 | `pm2-save` | Menyimpan status daftar proses PM2 agar restart otomatis |
 | `pm2-list` | Menampilkan tabel status semua proses PM2 yang berjalan |
 | `cls` | Membersihkan layar konsol terminal |
