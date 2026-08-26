@@ -94,7 +94,7 @@ NekoEgg dilengkapi proteksi sandboxing multi-lapis untuk menjaga stabilitas dan 
 Untuk pendaftaran IP node, perpanjangan masa aktif sewa, atau konsultasi:
 
 * 🌐 **Website:** [https://nekohost.id](https://nekohost.id)
-* 📧 **Email:** `admin@nekohost.id`
+* 📧 **Email:** `support@nekohost.id`
 * 💬 **WhatsApp Admin:** [https://wa.me/6281319859673](https://wa.me/6281319859673)
 * ✈️ **Telegram Dukungan:** [https://t.me/GalangP_Dev](https://t.me/GalangP_Dev)
 
