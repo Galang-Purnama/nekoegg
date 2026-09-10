@@ -1,7 +1,7 @@
 # 🐾 NekoEgg Commercial Edition (IP-Based Rental Runtime)
 
 [![Pterodactyl Egg](https://img.shields.io/badge/Pterodactyl-PTDL__v2-blue?style=for-the-badge&logo=pterodactyl)](https://pterodactyl.io/)
-[![Docker Image](https://img.shields.io/badge/Docker-ghcr.io%2Fgalang--purnama%2Fnekoegg%3Alatest-2496ED?style=for-the-badge&logo=docker)](https://github.com/Galang-Purnama/NekoHost-EGG)
+[![Docker Image](https://img.shields.io/badge/Docker-ghcr.io%2Fgalang--purnama%2Fnekoegg%3Alatest-2496ED?style=for-the-badge&logo=docker)](https://github.com/Galang-Purnama/nekoegg)
 [![Licensing](https://img.shields.io/badge/Licensing-Pure%20IP--Whitelisting-brightgreen?style=for-the-badge&logo=shield)](https://nekohost.id)
 [![Edition](https://img.shields.io/badge/Edition-Commercial%20%2F%20Rental-gold?style=for-the-badge&logo=probot)](https://nekohost.id)
 [![Multi Runtime](https://img.shields.io/badge/Runtimes-Node%20%7C%20Bun%20%7C%20Deno%20%7C%20Python%20%7C%20Go%20%7C%20PHP%20%7C%20Redis-blueviolet?style=for-the-badge)](https://nekohost.id)
@@ -13,7 +13,7 @@
 ## ⚡ Highlights
 
 * **Zero-Config Licensing**: Otorisasi lisensi otomatis berbasis IP VPS node host saat startup. Penyewa tidak perlu memasukkan token lisensi secara manual.
-* **Unified Multi-Runtime**: Ekosistem Node.js, Bun, Deno, Python (dengan Astral UV), Golang, PHP (Composer), dan embedded Redis server internal.
+* **Unified Multi-Runtime**: Ekosistem Node.js, Bun, Deno (v2), Python (dengan Astral UV), Golang, PHP (Composer), serta Redis server internal.
 * **Media, OCR & Scraping Suite**: Dilengkapi Tesseract OCR (Bahasa Indo & Eng), libvips (`vips`), WebP tools lengkap, FFmpeg, ImageMagick, serta headless Chromium.
 * **Host Anti-Abuse Hardening**: Proteksi aktif anti-miner, anti-torrent (DMCA), mitigasi DDoS flooder, isolasi workspace, dan sistem proteksi credentials.
 
@@ -25,15 +25,15 @@
 | :--- | :--- | :--- |
 | **Node.js** | 20, 22, 24, 25, 26 *(Default: 26)* | Variabel `NODE_VERSION` / `nvm use <ver>` |
 | **Bun** | Latest Stable | `bun run <file>`, `bun install` |
-| **Deno** | 1.x, 2.x, latest *(Default: latest)* | Variabel `DENO_VERSION` / `deno run` |
+| **Deno** | Latest Stable (v2.x) | `deno run`, `deno task` |
 | **Python** | 3.10, 3.11, 3.12, 3.13, 3.14 + **Astral UV** | Variabel `PYTHON_VERSION` / `uv pip install` |
-| **Golang** | 1.22, 1.23, 1.24, 1.25, 1.26 *(Default: 1.26)* | Variabel `GO_VERSION` / `go run` |
+| **Golang** | 1.26, 1.27 *(Default: 1.27)* | Variabel `GO_VERSION` / `go run`, `go build` |
 | **PHP** | 8.1, 8.2, 8.3, 8.4 + **Composer** | Variabel `PHP_VERSION` / `composer install` |
-| **Redis** | Internal Local Server & Remote Mode | `REDIS_MODE=local` / `redis-cli` |
+| **Redis** | Internal Server & Remote Mode | Default: `disabled` (hemat RAM), opsi `local` (port 6379) |
 | **Tesseract OCR** | Bahasa Indonesia (`ind`) & Inggris (`eng`) | `tesseract input.png output -l ind` |
 | **Media Engine** | FFmpeg, SoX, WebP, Libvips, ImageMagick | Video/audio convert, WA sticker & graphics |
-| **Scraper / Browser** | Chromium Headless + Fonts Emoji/CJK | Puppeteer & Playwright ready |
-| **Tunneling** | Cloudflare Zero Trust, Bore TCP, Localtunnel | `cloudflared`, `bore`, `lt` |
+| **Scraper / Browser** | Chromium Headless + Fonts Emoji | Puppeteer & Playwright ready |
+| **Tunneling** | Cloudflare Quick Tunnel, Bore, Localtunnel | `tunnel <port>` / `tunnel status` |
 
 ---
 
@@ -78,16 +78,18 @@ NekoEgg dilengkapi sistem pengamanan multi-lapis aktif untuk menjamin stabilitas
 
 | Perintah | Deskripsi Fungsi |
 | :--- | :--- |
+| `tunnel <port>` | Mengekspos port aplikasi lokal ke URL HTTPS publik instan |
+| `bench` / `syscheck` | Menguji performa CPU, disk I/O, serta network latency |
 | `refresh` / `sysinfo` | Menampilkan dashboard info sistem, pemakaian CPU/RAM, dan status runtime |
-| `ff` | Menjalankan Fastfetch untuk detail arsitektur container |
-| `myip` | Memeriksa IP publik keluar VPS secara instan |
+| `myip` | Memeriksa IP publik keluar VPS secara instan (untuk whitelist API) |
 | `ports` | Memeriksa daftar port jaringan yang sedang aktif / listening |
-| `clean-cache` | Membersihkan cache npm, yarn, pnpm, pip, uv, composer & deno |
-| `protect-env` | Mengunci dan mengamankan file konfigurasi & credentials |
+| `clean-cache` | Membersihkan cache package manager (npm, yarn, pnpm, pip, uv, composer, deno) |
+| `protect-env` | Mengunci dan mengamankan file konfigurasi & credentials (`chmod 600`) |
 | `pm2-save` | Menyimpan status daftar proses PM2 agar restart otomatis |
 | `pm2-list` | Menampilkan tabel status semua proses PM2 yang berjalan |
+| `stop` / `cancel` | Menghentikan proses yang sedang berjalan secara aman |
+| `ff` | Menjalankan Fastfetch untuk detail arsitektur container |
 | `cls` | Membersihkan layar konsol terminal |
-| `test-notify` | Menguji webhook Discord / Telegram bot notification |
 
 ---
 

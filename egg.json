@@ -7,7 +7,7 @@
     "exported_at": "2026-08-13T02:04:30+07:00",
     "name": "NekoHost Runtime",
     "author": "admin@nekohost.id",
-    "description": "All-in-One Dev & Bot Runtime (Node.js, Bun, Deno, Python, Golang, PHP, Redis, Cloudflare)",
+    "description": "All-in-One Dev & Bot Runtime (Node.js, Bun, Deno, Python, Golang, PHP, Redis, OCR, Cloudflare, Security Guard)",
     "features": [],
     "docker_images": {
         "ghcr.io/galang-purnama/nekoegg:latest": "ghcr.io/galang-purnama/nekoegg:latest"
@@ -30,7 +30,7 @@
     "variables": [
         {
             "name": "Startup Command",
-            "description": "Command executed when container starts",
+            "description": "Perintah yang dijalankan saat server start (default: bash).",
             "env_variable": "STARTUP_CMD",
             "default_value": "bash",
             "user_viewable": true,
@@ -40,7 +40,7 @@
         },
         {
             "name": "Cloudflare Tunnel Token",
-            "description": "Token dari Cloudflare Tunnel. Kosongkan jika tidak dipakai. Dapatkan dari dashboard Cloudflare Zero Trust.",
+            "description": "Token Cloudflare Tunnel untuk menghubungkan domain kustom.",
             "env_variable": "CF_TUNNEL_TOKEN",
             "default_value": "",
             "user_viewable": true,
@@ -50,7 +50,7 @@
         },
         {
             "name": "Proxy Type",
-            "description": "Pilih tipe proxy: http, https, socks5, socks5h, atau socks4. Default: http.",
+            "description": "Protokol proxy outbound: http, https, socks5, socks5h, socks4.",
             "env_variable": "PROXY_TYPE",
             "default_value": "http",
             "user_viewable": true,
@@ -60,7 +60,7 @@
         },
         {
             "name": "Proxy Host / IP",
-            "description": "IP atau Hostname Proxy (contoh: 103.12.34.56 atau proxy.example.com). Kosongkan jika tidak memakai proxy.",
+            "description": "IP atau Hostname proxy eksternal (kosongkan jika tanpa proxy).",
             "env_variable": "PROXY_HOST",
             "default_value": "",
             "user_viewable": true,
@@ -70,7 +70,7 @@
         },
         {
             "name": "Proxy Port",
-            "description": "Port Proxy (contoh: 8080, 1080, 3128).",
+            "description": "Port proxy eksternal (contoh: 8080, 1080).",
             "env_variable": "PROXY_PORT",
             "default_value": "8080",
             "user_viewable": true,
@@ -80,7 +80,7 @@
         },
         {
             "name": "Proxy Username",
-            "description": "Username untuk autentikasi proxy (opsional). Kosongkan jika proxy tidak membutuhkan login.",
+            "description": "Username autentikasi proxy (opsional).",
             "env_variable": "PROXY_USER",
             "default_value": "",
             "user_viewable": true,
@@ -90,7 +90,7 @@
         },
         {
             "name": "Proxy Password",
-            "description": "Password untuk autentikasi proxy (opsional). Kosongkan jika proxy tidak membutuhkan login.",
+            "description": "Password autentikasi proxy (opsional).",
             "env_variable": "PROXY_PASS",
             "default_value": "",
             "user_viewable": true,
@@ -100,17 +100,17 @@
         },
         {
             "name": "Redis Mode",
-            "description": "Pilih mode Redis: 'local' (jalankan redis internal di container) atau 'remote' (hubungkan ke redis eksternal). Default: local.",
+            "description": "Mode Redis: disabled (hemat RAM), local (server internal), remote (eksternal).",
             "env_variable": "REDIS_MODE",
-            "default_value": "local",
+            "default_value": "disabled",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|string|in:local,remote",
+            "rules": "nullable|string|in:local,remote,disabled",
             "field_type": "text"
         },
         {
             "name": "Redis Host / IP",
-            "description": "IP atau Hostname Redis (default: 127.0.0.1 untuk local).",
+            "description": "Host / IP server Redis (default: 127.0.0.1).",
             "env_variable": "REDIS_HOST",
             "default_value": "127.0.0.1",
             "user_viewable": true,
@@ -120,7 +120,7 @@
         },
         {
             "name": "Redis Port",
-            "description": "Port Redis Server (default: 6379).",
+            "description": "Port server Redis (default: 6379).",
             "env_variable": "REDIS_PORT",
             "default_value": "6379",
             "user_viewable": true,
@@ -130,7 +130,7 @@
         },
         {
             "name": "Redis Username",
-            "description": "Username Redis (opsional, default: default).",
+            "description": "Username autentikasi Redis (opsional).",
             "env_variable": "REDIS_USER",
             "default_value": "",
             "user_viewable": true,
@@ -140,7 +140,7 @@
         },
         {
             "name": "Redis Password",
-            "description": "Password Redis (opsional. Jika diisi pada mode local, server Redis lokal akan otomatis dilindungi requirepass).",
+            "description": "Password autentikasi Redis (opsional).",
             "env_variable": "REDIS_PASS",
             "default_value": "",
             "user_viewable": true,
@@ -150,7 +150,7 @@
         },
         {
             "name": "NodeJS Version",
-            "description": "Pilih versi NodeJS (20, 22, 24, 25, 26). Kosongkan untuk default (26).",
+            "description": "Versi Node.js aktif (20, 22, 24, 25, 26).",
             "env_variable": "NODE_VERSION",
             "default_value": "26",
             "user_viewable": true,
@@ -160,7 +160,7 @@
         },
         {
             "name": "Python Version",
-            "description": "Pilih versi Python (3.10, 3.11, 3.12, 3.13, 3.14). Kosongkan untuk default (3.14).",
+            "description": "Versi Python aktif (3.10, 3.11, 3.12, 3.13, 3.14).",
             "env_variable": "PYTHON_VERSION",
             "default_value": "3.14",
             "user_viewable": true,
@@ -170,17 +170,17 @@
         },
         {
             "name": "Golang Version",
-            "description": "Pilih versi Golang (1.22, 1.23, 1.24, 1.25, 1.26). Kosongkan untuk default (1.26).",
+            "description": "Versi Golang aktif (1.26, 1.27).",
             "env_variable": "GO_VERSION",
-            "default_value": "1.26",
+            "default_value": "1.27",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|string|in:1.22,1.23,1.24,1.25,1.26",
+            "rules": "nullable|string|in:1.26,1.27",
             "field_type": "text"
         },
         {
             "name": "PHP Version",
-            "description": "Pilih versi PHP (8.1, 8.2, 8.3, 8.4). Kosongkan untuk default (8.3).",
+            "description": "Versi PHP CLI aktif (8.1, 8.2, 8.3, 8.4).",
             "env_variable": "PHP_VERSION",
             "default_value": "8.3",
             "user_viewable": true,
@@ -190,17 +190,17 @@
         },
         {
             "name": "Deno Version",
-            "description": "Pilih versi Deno (1.x, 2.x, latest). Kosongkan untuk default (latest).",
+            "description": "Versi Deno yang terpasang (latest stable).",
             "env_variable": "DENO_VERSION",
             "default_value": "latest",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|string|in:1.x,2.x,latest",
+            "rules": "nullable|string|max:20",
             "field_type": "text"
         },
         {
             "name": "Bun Version",
-            "description": "Pilih versi Bun (latest, canary, atau versi spesifik seperti 1.2.4). Kosongkan untuk default (latest).",
+            "description": "Versi Bun (latest, canary, atau versi spesifik).",
             "env_variable": "BUN_VERSION",
             "default_value": "latest",
             "user_viewable": true,
@@ -210,7 +210,7 @@
         },
         {
             "name": "Composer Version",
-            "description": "Pilih versi Composer (2, 2.2, 1, atau latest). Kosongkan untuk default (2).",
+            "description": "Versi Composer aktif (2, 2.2, 1, latest).",
             "env_variable": "COMPOSER_VERSION",
             "default_value": "2",
             "user_viewable": true,
@@ -220,7 +220,7 @@
         },
         {
             "name": "Git Repository URL",
-            "description": "URL Git repo yang otomatis di-clone saat folder server kosong (contoh: https://github.com/user/repo). Kosongkan jika tidak dipakai.",
+            "description": "URL Git repository untuk auto-clone saat folder server kosong.",
             "env_variable": "GIT_REPO",
             "default_value": "",
             "user_viewable": true,
@@ -230,7 +230,7 @@
         },
         {
             "name": "Git Branch",
-            "description": "Branch repo yang ingin di-clone (default: main).",
+            "description": "Branch repository yang di-clone (default: main).",
             "env_variable": "GIT_BRANCH",
             "default_value": "main",
             "user_viewable": true,
@@ -240,7 +240,7 @@
         },
         {
             "name": "Git Access Token",
-            "description": "Personal Access Token jika repo bersifat private. Kosongkan jika repo public.",
+            "description": "Personal Access Token (PAT) jika repository bersifat private.",
             "env_variable": "GIT_ACCESS_TOKEN",
             "default_value": "",
             "user_viewable": true,
@@ -250,7 +250,7 @@
         },
         {
             "name": "Git Username",
-            "description": "Username atau Nama identitas Git (git config user.name). Kosongkan jika tidak dipakai.",
+            "description": "Identitas nama/username Git (git config user.name).",
             "env_variable": "GIT_USERNAME",
             "default_value": "",
             "user_viewable": true,
@@ -260,42 +260,12 @@
         },
         {
             "name": "Git Email",
-            "description": "Email identitas Git (git config user.email). Kosongkan jika tidak dipakai.",
+            "description": "Identitas email Git (git config user.email).",
             "env_variable": "GIT_EMAIL",
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string|max:200",
-            "field_type": "text"
-        },
-        {
-            "name": "Discord Webhook URL",
-            "description": "URL Webhook Discord untuk notifikasi otomatis saat server Pterodactyl menyala (Boot Alert). Kosongkan jika tidak dipakai.",
-            "env_variable": "DISCORD_WEBHOOK_URL",
-            "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "nullable|string|max:1000",
-            "field_type": "text"
-        },
-        {
-            "name": "Telegram Bot Token",
-            "description": "Token Bot Telegram untuk notifikasi boot (contoh: 123456:ABC-DEF...). Kosongkan jika tidak dipakai.",
-            "env_variable": "TELEGRAM_BOT_TOKEN",
-            "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "nullable|string|max:200",
-            "field_type": "text"
-        },
-        {
-            "name": "Telegram Chat ID",
-            "description": "Chat ID / Group ID Telegram tujuan pengiriman notifikasi boot (contoh: 123456789 atau -1001234567890). Kosongkan jika tidak dipakai.",
-            "env_variable": "TELEGRAM_CHAT_ID",
-            "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "nullable|string|max:100",
             "field_type": "text"
         }
     ]
